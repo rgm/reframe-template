@@ -5,7 +5,7 @@
             [stylefy.core :as stylefy]
             [cljs.pprint :as pp]))
 
-(enable-console-print!)
+; (enable-console-print!)
 
 (def default-db {:click-count 0})
 

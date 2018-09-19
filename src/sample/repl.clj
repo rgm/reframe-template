@@ -1,9 +1,9 @@
 (ns sample.repl
   (:require [clojure.java.io :as io]
             [cider.nrepl]
+            ; [cider.piggieback :as pback]
             [figwheel.main.api :as figwheel]
             [nrepl.server :as nrepl]))
-
 
 (def nrepl-port 7888)
 
@@ -58,24 +58,6 @@
                    :options compiler-options
                    :config figwheel-config}))
 
-(defn start-cljs-repl
-  []
-  ;; TODO as far as I can tell this is what does the piggieback wrapping
-  (figwheel/cljs-repl "dev"))
-
-(defn stop-figwheel!
-  []
-  (figwheel/stop "dev"))
-
-(comment
-  (start-figwheel!)
-  (stop-figwheel!)
-  (figwheel.main/reset))
-
-
-; (require '[cljs.repl :as repl]
-;          '[cljs.repl.browser :as browser])
-;
 ; (def foreign-libs
 ;   [{:file "npm/dist/leaflet.js"
 ;     :provides ["leaflet" "leaflet-draw"]
@@ -105,11 +87,30 @@
 ;                       cljsjs.highlight.langs.clojure HighlightLangsClojure
 ;                       cljsjs.react-flip-move FlipMove}}])
 
+(defn start-cljs-repl
+  []
+  ;; TODO as far as I can tell this is what does the piggieback wrapping??
+  (figwheel/cljs-repl "dev"))
+
+(defn stop-figwheel!
+  []
+  (figwheel/stop "dev"))
+
+(comment
+  (start-figwheel!)
+  (stop-figwheel!)
+  (figwheel.main.api/repl-env "dev")
+  (figwheel.main/reset))
+
+;; notes, gunk
+; (require '[cljs.repl :as repl]
+;          '[cljs.repl.browser :as browser])
+;
 ; (cljs.repl/repl (browser/repl-env)
 ;                 :foreign-libs foreign-libs)
 
 ; https://github.com/bhauman/figwheel-main/blob/c93322cc3d7c41bf333e4e2f0718b9c6ca71593b/docs/docs/vim.md
-; (figwheel.main.api/cljs-repl "dev") ;; need something for foreign libs
+; (figwheel.main.api/cljs-repl "dev") ;; need something?? for foreign libs
 
 ; to get things going in vim
 ; :Piggieback (figwheel.main.api/repl-env "dev")
