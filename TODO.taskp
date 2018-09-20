@@ -5,6 +5,16 @@
 - property tests
 - ring et al.
 
+https://github.com/bhauman/figwheel-main/blob/master/docs/docs/vim.md
+https://clojurians.slack.com/archives/C0DF8R51A/p1537288231000100
+http://blog.fikesfarm.com/posts/2015-12-22-foreign-libs-processing-in-repl.html
+https://clojurescript.org/news/2017-07-30-global-exports
+https://lambdaisland.com/guides/clojure-repls/clojurescript-repls#org3393425
+https://github.com/nrepl/piggieback
+
+- hook up figwheel to compile to /out
+- get figwheel to serve up scripts from /out
+
 Archive:
 	- reframe @done(2018-09-12)
 	- adds more react, leaflet, vega @done(2018-09-17)

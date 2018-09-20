@@ -3,6 +3,12 @@
 dev: foreign-libs
 	clojure -A:figwheel
 
+dev-once-raw:
+	clojure -R:figwheel -m "cljs.main" -co dev.cljs.edn --compile "sample.core"
+
+dev-once-fig:
+	clojure -R:figwheel -m "figwheel.main" --build-once "dev"
+
 prd: foreign-libs
 	clojure --main "figwheel.main" --build-once "prd"
 	cp target/public/cljs-out/prd-main.js dist/app.js

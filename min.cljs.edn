@@ -1,6 +1,7 @@
 {:main sample.core
  :closure-defines {goog.DEBUG false}
  :optimizations :advanced
+ :verbose true
  :infer-externs true
  :npm-deps false
  :language-out :ecmascript5 ;; see https://dev.clojure.org/jira/browse/CLJS-2376

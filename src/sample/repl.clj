@@ -1,7 +1,7 @@
 (ns sample.repl
   (:require [clojure.java.io :as io]
             [cider.nrepl]
-            ; [cider.piggieback :as pback]
+            [cider.piggieback :as pback]
             [figwheel.main.api :as figwheel]
             [nrepl.server :as nrepl]))
 
@@ -9,11 +9,13 @@
 
 (defonce nrepl-server (atom nil))
 
+; (def handler (cider.piggieback/wrap-cljs-repl cider.nrepl/cider-nrepl-handler))
+(def handler cider.nrepl/cider-nrepl-handler)
+
 (defn start-nrepl-server!
   []
   (reset! nrepl-server
-          (nrepl/start-server :port nrepl-port
-                              :handler cider.nrepl/cider-nrepl-handler))
+          (nrepl/start-server :port nrepl-port :handler handler))
   (println "Cider nREPL server started on port" nrepl-port)
   (spit ".nrepl-port" nrepl-port))
 
@@ -43,17 +45,16 @@
   {:main 'sample.core
    :watch-dirs ["src"]
    ; :foreign-libs foreign-libs
-   ; :output-to "target/public/cljs-out/dev-main.js"
-   ; :output-dir "target/public/cljs-out/dev"
-   ; :output-to "out/dev-main.js"
-   ; :output-dir "out"
+   :output-dir "out"
+   :output-to "out/dev-main.js"
+   :asset-path ""
    ; :target-dir "out"
-   ; :asset-path "/"
    :infer-externs true
    :npm-deps false})
 
 (defn start-figwheel!
   []
+  ; (figwheel/start "dev")
   (figwheel/start {:id "dev"
                    :options compiler-options
                    :config figwheel-config}))

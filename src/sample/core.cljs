@@ -1,6 +1,7 @@
 (ns sample.core
   (:require [re-frame.core :as re-frame]
             [reagent.core :as reagent]
+            [cljs.spec.alpha]
             [semantic-ui :as sui]
             [stylefy.core :as stylefy]
             [cljs.pprint :as pp]))
@@ -37,7 +38,7 @@
   []
   (let [current-count (re-frame/subscribe [:subs/current-count-english])]
     [:div
-     [:> sui/Header "re-frame example"]
+     [:> sui/Header "re-frame examples"]
      [:> sui/Button
       {:on-click #(re-frame/dispatch [:evt/increment-count])}
       "increment count"]
