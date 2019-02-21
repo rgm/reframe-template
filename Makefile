@@ -1,15 +1,9 @@
-.PHONY: dev prd min show-figwheel-config foreign-dev foreign-prd clean clobber
+all: min
 
-dev: foreign-dev
-	clojure --main rebel-readline.main --repl
-	# clojure -A:figwheel
+repl: webpack
+	clojure -C:dev --main rebel-readline.main --repl
 
-prd: foreign-prd
-	clojure --main "figwheel.main" --build-once "config/prd"
-	cp target/public/cljs-out/prd-main.js dist/app.js
-	cp -r resources/public/css dist
-
-min: foreign-prd
+min: webpack
 	clojure --main "figwheel.main" --build-once "config/min"
 	cp target/public/cljs-out/min-main.js dist/app.js
 	cp -r resources/public/css dist
@@ -17,10 +11,12 @@ min: foreign-prd
 show-figwheel-config:
 	clojure -m figwheel.main -pc -b dev -r
 
-foreign-dev: node_modules src/js/**
+webpack: target/public/js-out/react.js target/public/js-out/react.min.js
+
+target/public/js-out/react.js: node_modules src/js/**
 	yarn webpack --config config/webpack-dev.config.js
 
-foreign-prd: node_modules src/js/**
+target/public/js-out/react.min.js: node_modules src/js/**
 	yarn webpack --config config/webpack-prd.config.js
 
 node_modules: package.json
@@ -29,8 +25,9 @@ node_modules: package.json
 
 clean:
 	rm -rf target out nashorn_code_cache .cljs_nashorn_repl
+	rm -rf .cpcache .nrepl-port
 	rm -rf dist/*.js dist/*.map dist/css
 
-clobber: clean
+distclean: clean
 	rm -rf tmp node_modules
-
+	rm -rf .rebel_readline_history

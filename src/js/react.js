@@ -9,5 +9,3 @@ window.React = React;
 window.ReactDOM = ReactDOM;
 window.ReactDOMServer = ReactDOMServer;
 window.createReactClass = createReactClass;
-import * as RTG from "react-transition-group";
-window.RTG = RTG;
