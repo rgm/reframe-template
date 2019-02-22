@@ -3,7 +3,7 @@
         org.clojure/clojurescript {:mvn/version "1.10.520"}
         nrepl/nrepl {:mvn/version "0.6.0"}
         cider/cider-nrepl {:mvn/version "0.21.1"}
-        cider/piggieback {:mvn/version "0.4.0"}
+        cider/piggieback {:mvn/version "0.4.1-SNAPSHOT"}
         com.bhauman/figwheel-main {:mvn/version "0.2.0"}
         com.bhauman/rebel-readline {:mvn/version "0.1.4"}
         com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
