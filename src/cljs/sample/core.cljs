@@ -8,7 +8,7 @@
 (defn mount
   []
   (react-dom/render
-    (react/createElement "div" #js {} "hello")
+    (react/createElement "div" #js {} "hello from react")
     (js/document.getElementById "app")))
 
 (defonce init (mount))

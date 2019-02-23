@@ -34,3 +34,10 @@
   (figwheel.main.api/repl-env figwheel-build-id))
 
 (println "[Sample] Type (go) to start figwheel and nrepl")
+
+(comment
+
+  ;; check nrepl from jvm
+  (+ 1 2)
+
+  )
