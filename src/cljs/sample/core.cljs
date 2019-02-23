@@ -1,25 +1,22 @@
 (ns sample.core
-  (:require [reagent.core :as reagent]))
+  (:require
+    [react]
+    [react-dom]))
 
-(defn Layout
+;; bypass reagent and cut right to react
+;; see https://juxt.pro/blog/posts/react-hooks-raw.html
+(defn mount
   []
-  [:<>
-   [:h1 "reagent example"]
-   [:div
-    [:button
-     {:on-click #(js/alert "click!")}
-     "click me"]] ])
+  (react-dom/render
+    (react/createElement "div" #js {} "hello")
+    (js/document.getElementById "app")))
 
-(defn mount-root
-  []
-  (let [host-node (.getElementById js/document "app")]
-    (reagent/render [Layout] host-node)))
-
-(mount-root)
+(defonce init (mount))
 
 (comment
 
   ;;; eval this in editor to check if we're connected properly
   (js/alert "hi from editor via piggieback")
+  (react-dom/render)
 
   )
