@@ -1,4 +1,4 @@
-ATTENTION: Archived, see https://github.com/rgm/clojure-experiments/reframe-template
+ATTENTION: Archived, see https://github.com/rgm/clojure-experiments/tree/master/reframe-template
 
 # Re-frame template with figwheel.main
 
