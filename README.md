@@ -1,3 +1,5 @@
+ATTENTION: Archived, see https://github.com/rgm/clojure-experiments/reframe-template
+
 # Re-frame template with figwheel.main
 
 Starting point for a re-frame/figwheel project using tools.deps. I'm not at all
